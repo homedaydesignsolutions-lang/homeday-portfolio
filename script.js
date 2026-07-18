@@ -1,4 +1,4 @@
-console.log(document.querySelectorAll(".project img"));
+
 
 // Sticky Navbar
 
