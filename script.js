@@ -162,6 +162,9 @@ form.addEventListener("submit", async function(e){
 
     if(response.ok){
 
+        // Google Ads Formspree Lead Conversion Trigger
+        gtag('event', 'conversion', {'send_to': 'AW-18319788368/TMQOCLaB-dIcENCSx59E'});
+
         formStatus.innerHTML = "✅ Thank you! Your enquiry has been sent successfully.";
         formStatus.style.color = "#25D366";
 
