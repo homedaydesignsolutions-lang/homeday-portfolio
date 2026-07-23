@@ -63,20 +63,16 @@ lightbox.addEventListener("click", (e) => {
 const menuToggle = document.querySelector(".menu-toggle");
 const navMenu = document.querySelector(".navbar ul");
 
+// Menu open / close
 menuToggle.addEventListener("click", () => {
-
     navMenu.classList.toggle("active");
+});
 
-    if(navMenu.classList.contains("active")){
-
-        menuToggle.innerHTML = "✕";
-
-    }else{
-
-        menuToggle.innerHTML = "☰";
-
-    }
-
+// Menu item par click karne ke baad menu close
+navMenu.querySelectorAll("a").forEach(link => {
+    link.addEventListener("click", () => {
+        navMenu.classList.remove("active");
+    });
 });
 // SCROLL REVEAL
 
@@ -183,3 +179,67 @@ form.addEventListener("submit", async function(e){
 });
 
 }
+document.addEventListener("DOMContentLoaded", function () {
+
+    const menuToggle = document.getElementById("menuToggle");
+    const mobileSideMenu = document.getElementById("mobileSideMenu");
+    const mobileMenuClose = document.getElementById("mobileMenuClose");
+    const mobileMenuOverlay = document.getElementById("mobileMenuOverlay");
+
+    if (!menuToggle || !mobileSideMenu) {
+        console.log("Mobile menu elements not found");
+        return;
+    }
+
+    // Open menu
+    menuToggle.addEventListener("click", function () {
+        mobileSideMenu.classList.add("active");
+        mobileMenuOverlay.classList.add("active");
+    });
+
+    // Close with X
+    mobileMenuClose.addEventListener("click", function () {
+        mobileSideMenu.classList.remove("active");
+        mobileMenuOverlay.classList.remove("active");
+    });
+
+    // Close by clicking outside
+    mobileMenuOverlay.addEventListener("click", function () {
+        mobileSideMenu.classList.remove("active");
+        mobileMenuOverlay.classList.remove("active");
+    });
+
+    // Close after clicking menu link
+    document.querySelectorAll(".mobile-side-menu a").forEach(function (link) {
+
+        link.addEventListener("click", function () {
+            mobileSideMenu.classList.remove("active");
+            mobileMenuOverlay.classList.remove("active");
+        });
+
+    });
+
+});
+
+// SOCIAL BUTTONS ON SCROLL
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const socialFloating = document.querySelector(".social-floating");
+
+    if (!socialFloating) {
+        console.log("Social buttons not found");
+        return;
+    }
+
+    window.addEventListener("scroll", function () {
+
+        if (window.scrollY > 50) {
+            socialFloating.classList.add("show");
+        } else {
+            socialFloating.classList.remove("show");
+        }
+
+    });
+
+});

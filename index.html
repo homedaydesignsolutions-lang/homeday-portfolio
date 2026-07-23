@@ -84,25 +84,50 @@
 
     <header>
 
-        <nav class="navbar">
+      <nav class="navbar">
 
-            <div class="logo">
-                <img src="assets/icons/logo.png" alt="Homeday Logo">
-            </div>
+    <div class="logo">
+        <img src="assets/icons/logo.png" alt="Homeday Logo">
+    </div>
 
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#portfolio">Portfolio</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-            <div class="menu-toggle">
-    ☰
-</div>
+    <!-- Desktop Menu -->
+    <ul class="desktop-menu">
+        <li><a href="#">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#portfolio">Portfolio</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
 
-        </nav>
+    <!-- Mobile Menu Button -->
+    <div class="menu-toggle" id="menuToggle">
+        ☰
+    </div>
 
+</nav>
+
+<!-- Mobile Side Menu -->
+
+<div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+
+<nav class="mobile-side-menu" id="mobileSideMenu">
+
+    <button class="mobile-menu-close" id="mobileMenuClose">
+        ×
+    </button>
+
+    <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#services">Elevation</a></li>
+        <li><a href="#walkthrough">Walkthrough</a></li>
+        <li><a href="#interior">Interior</a></li>
+        <li><a href="#contact">Call Us</a></li>
+        <li><a href="#portfolio">Portfolio</a></li>
+        <li><a href="#team">Team</a></li>
+    </ul>
+
+</nav>
     </header>
 
   <!-- HERO -->
@@ -459,14 +484,14 @@
 
             <h3>Homeday Design Solutions</h3>
 
-         <!-- पहला फोन नंबर -->
+<!-- Primary Phone Number -->
 <p>📞 <a href="tel:+916261146869" onclick="gtag('event', 'conversion', {'send_to': 'AW-18319788368/AfL7CLyB-dIcENCSx59E'});">
-    Call Primary Number
+    +91 62611 46869
 </a></p>
 
-<!-- दूसरा फोन नंबर -->
+<!-- Secondary Phone Number -->
 <p>📞 <a href="tel:+916264718693" onclick="gtag('event', 'conversion', {'send_to': 'AW-18319788368/AfL7CLyB-dIcENCSx59E'});">
-    Call Secondary Number
+    +91 62647 18693
 </a></p>
 
             <p>📧 homedaydesignsolutions@gmail.com</p>
@@ -602,6 +627,23 @@ referrerpolicy="strict-origin-when-cross-origin">
 
     <script src="script.js"></script>
 
+    <!-- Social Media Floating Buttons -->
+
+<div class="social-floating">
+
+    <a href="https://www.facebook.com/profile.php?id=61576900590855" target="_blank" aria-label="Facebook">
+        <img src="assets/icons/facebook.webp" alt="Facebook">
+    </a>
+
+    <a href="https://www.instagram.com/homeday_design_solution" target="_blank" aria-label="Instagram">
+        <img src="assets/icons/instagram.webp" alt="Instagram">
+    </a>
+
+    <a href="https://in.pinterest.com/homedaydesignsolutions" target="_blank" aria-label="Pinterest">
+        <img src="assets/icons/pinterest.png" alt="Pinterest">
+    </a>
+
+</div>
 </body>
 
 </html>

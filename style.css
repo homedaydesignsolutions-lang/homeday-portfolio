@@ -44,6 +44,7 @@ body{
 
 
 .logo{
+    margin-left:10px;
     font-size:28px;
     font-weight:700;
     color:#ffffff;
@@ -58,9 +59,9 @@ body{
 
 .navbar a{
     text-decoration:none;
-    color:#fff;
-    font-size:15px;
-    font-weight:500;
+    color:#111;
+    font-size:20px;
+    font-weight:600;
     transition:.3s;
     position:relative;
 }
@@ -163,49 +164,62 @@ body{
 @media(max-width:768px){
 
     .hero-content{
-    margin:0 auto;
-    text-align:center;
+        margin:0 auto;
+        text-align:center;
+    }
+
+    .hero p{
+        font-size:17px;
+    }
+
+    .buttons{
+        justify-content:center;
+        flex-direction:column;
+    }
+
+    /* MOBILE NAVBAR */
+    .navbar{
+        width:94%;
+        top:12px;
+        padding:8px 18px;
+        background:#ffffff;
+        backdrop-filter:none;
+        border:1px solid rgba(0,0,0,.08);
+        border-radius:14px;
+    }
+
+    /* LOGO */
+    .logo img{
+        height:48px;
+        width:auto;
+        max-width:180px;
+        object-fit:contain;
+        display:block;
+    }
+
+    /* MOBILE MENU */
+    .navbar ul{
+        display:none;
+    }
+
+    .hero h1{
+        font-size:40px;
+    }
+
+    .btn1,
+    .btn2{
+        width:220px;
+        margin:auto;
+    }
+
 }
 
 
-.hero p{
-    font-size:17px;
-}
-
-.buttons{
-    justify-content:center;
-}
-
-.navbar{
-    padding:18px 6%;
-}
-
-.navbar ul{
-    display:none;
-}
-
-.hero h1{
-    font-size:40px;
-}
-
-.hero p{
-    font-size:17px;
-}
-
-.buttons{
-    flex-direction:column;
-}
-
-.btn1,.btn2{
-    width:220px;
-    margin:auto;
-}
-
-}
 
 .logo img{
-    height:65px;
+    height: 80px;px;
     width:auto;
+    display:block;
 }
 .navbar{
     position:fixed;
@@ -217,11 +231,14 @@ body{
     display:flex;
     justify-content:space-between;
     align-items:center;
-    padding:16px 40px;
-    background:rgba(15,15,15,.15);
-    backdrop-filter:blur(28px);
-    border:1px solid rgba(255,255,255,.08);
+    padding:12px 40px;
+
+    background:#ffffff;
+    backdrop-filter:none;
+
+    border:1px solid rgba(0,0,0,.08);
     border-radius:18px;
+
     z-index:1000;
     transition:.4s;
 }
@@ -572,12 +589,12 @@ color:#aaa;
 }
 /* NAVBAR ON SCROLL */
 
-.navbar.scrolled{
-
-    background:rgba(10,10,10,.92);
-    backdrop-filter:blur(20px);
-    box-shadow:0 10px 35px rgba(0,0,0,.35);
-
+.navbar.scrolled {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
 }
 /* WHATSAPP FLOAT */
 
@@ -774,10 +791,11 @@ border:1px solid rgba(255,255,255,.08);
 
 .menu-toggle{
     display:none;
-    font-size:34px;
+    font-size:30px;
     cursor:pointer;
-    color:#fff;
+    color:#111;
     user-select:none;
+    z-index:10001;
 }
 
 @media(max-width:768px){
@@ -788,21 +806,50 @@ border:1px solid rgba(255,255,255,.08);
 
     .navbar ul{
         position:absolute;
-        top:90px;
-        left:0;
-        width:100%;
-        background:#111;
+        top:70px;
+        right:0;
+        left:auto;
+
+        width:220px;
+
+        background:#fff;
+
         flex-direction:column;
-        gap:25px;
-        padding:30px 0;
-        text-align:center;
-        display:none;
-        border-radius:18px;
+        align-items:center;
+
+        gap:20px;
+        padding:25px 20px;
+
+        display:flex;
+
+        /* Initially hidden on right */
+        opacity:0;
+        visibility:hidden;
+        transform:translateX(30px);
+
+        transition:all .35s ease;
+
+        border-radius:15px;
+
+        box-shadow:0 15px 40px rgba(0,0,0,.2);
+
+        z-index:10000;
     }
 
+    /* Open menu */
     .navbar ul.active{
-        display:flex;
+        opacity:1;
+        visibility:visible;
+        transform:translateX(0);
     }
+
+.navbar a{
+    color:#111;
+    gap:24px;
+    font-size:20px;
+    font-weight:600;
+    letter-spacing:.5px;
+}
 
 }
 /* SCROLL REVEAL */
@@ -1015,4 +1062,610 @@ line-height:1.8;
     height:420px;
     border:0;
     display:block;
+}
+.contact-info a{
+    color:#d98b19;
+    text-decoration:none;
+    transition:.3s ease;
+}
+
+.contact-info a:hover{
+    color:#ffffff;
+}
+/* =================================
+   MOBILE SIDE MENU
+================================= */
+
+/* Mobile menu button - desktop par hidden */
+.menu-toggle {
+    display: none;
+    cursor: pointer;
+    font-size: 28px;
+    color: #111;
+}
+
+
+/* Overlay */
+.mobile-menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    background: rgba(0, 0, 0, 0.35);
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    transition: all 0.3s ease;
+
+    z-index: 9998;
+}
+
+
+/* Right Side Menu */
+.mobile-side-menu {
+    position: fixed;
+
+    top: 0;
+    right: 0;
+
+    width: 280px;
+    max-width: 80%;
+    height: 100vh;
+
+    background: #ffffff;
+
+    padding: 80px 30px 30px;
+
+    box-sizing: border-box;
+
+    transform: translateX(100%);
+
+    transition: transform 0.35s ease;
+
+    z-index: 9999;
+
+    box-shadow: -8px 0 30px rgba(0, 0, 0, 0.15);
+}
+
+
+/* Menu Open */
+.mobile-side-menu.active {
+    transform: translateX(0);
+}
+
+
+/* Overlay Open */
+.mobile-menu-overlay.active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+
+/* Close Button */
+.mobile-menu-close {
+    position: absolute;
+
+    top: 20px;
+    right: 20px;
+
+    width: 40px;
+    height: 40px;
+
+    border: none;
+    background: transparent;
+
+    color: #111;
+
+    font-size: 32px;
+
+    cursor: pointer;
+}
+
+
+/* Menu List */
+.mobile-side-menu ul {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 25px;
+
+    list-style: none;
+
+    padding: 0;
+    margin: 0;
+}
+
+
+/* Menu Items */
+.mobile-side-menu ul li {
+    width: 100%;
+    text-align: center;
+}
+
+
+/* Menu Links */
+.mobile-side-menu ul li a {
+    display: block;
+
+    color: #111111;
+
+    text-decoration: none;
+
+    font-size: 19px;
+
+    font-weight: 600;
+
+    padding: 5px 0;
+
+    transition: color 0.3s ease;
+}
+
+
+/* Hover */
+.mobile-side-menu ul li a:hover {
+    color: #d98b19;
+}
+
+
+/* =================================
+   MOBILE VIEW
+================================= */
+
+@media (max-width: 768px) {
+
+    /* Desktop menu hide */
+    .desktop-menu {
+        display: none;
+    }
+
+    /* Hamburger show */
+    .menu-toggle {
+        display: block;
+    }
+
+}
+
+
+/* =================================
+   DESKTOP VIEW
+================================= */
+
+@media (min-width: 769px) {
+
+    .mobile-side-menu,
+    .mobile-menu-overlay {
+        display: none;
+    }
+
+}
+@media (max-width: 768px) {
+
+    /* Original desktop menu completely hide */
+    .navbar .desktop-menu {
+        display: none !important;
+    }
+
+    /* Hamburger show */
+    .navbar .menu-toggle {
+        display: block !important;
+    }
+
+}
+/* SOCIAL FLOATING BUTTONS */
+
+.social-floating {
+    position: fixed;
+    left: 0;
+    top: 50%;
+
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    z-index: 99999;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transform: translateY(-50%) translateX(-100px);
+
+    transition: all 0.4s ease;
+}
+
+/* Scroll ke baad visible */
+.social-floating.show {
+    opacity: 1;
+    visibility: visible;
+
+    transform: translateY(-50%) translateX(0);
+}
+
+
+.social-floating a {
+    width: 55px;
+    height: 55px;
+
+    background: #ffffff;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 0 12px 12px 0;
+
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+
+.social-floating img {
+    width: 32px;
+    height: 32px;
+
+    object-fit: contain;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 768px) {
+
+    .social-floating a {
+        width: 50px;
+        height: 50px;
+    }
+
+    .social-floating img {
+        width: 28px;
+        height: 28px;
+    }
+
+}
+/* =========================================
+   MOBILE HERO IMPROVEMENT
+========================================= */
+
+@media (max-width: 768px) {
+
+    /* Hero section ko navbar se thoda neeche */
+    .hero {
+        padding-top: 100px;
+    }
+
+    /* Hero content ko center */
+    .hero-content {
+        width: 100%;
+        max-width: 100%;
+        margin: 0 auto;
+
+        text-align: center;
+
+        position: relative;
+        z-index: 2;
+    }
+
+    /* Main heading */
+    .hero h1 {
+        margin-top: 25px;
+        margin-bottom: 25px;
+
+        font-size: 40px;
+        line-height: 1.08;
+
+        /* Text ko image/background se separate rakhega */
+        text-shadow:
+            2px 2px 4px rgba(0, 0, 0, 0.95),
+            -2px -2px 4px rgba(0, 0, 0, 0.95),
+            2px -2px 4px rgba(0, 0, 0, 0.95),
+            -2px 2px 4px rgba(0, 0, 0, 0.95);
+    }
+
+    /* Description */
+    .hero p {
+        margin-top: 20px;
+        margin-bottom: 25px;
+
+        font-size: 17px;
+        line-height: 1.9;
+
+        text-shadow:
+            1px 1px 4px rgba(0, 0, 0, 0.95),
+            -1px -1px 4px rgba(0, 0, 0, 0.95);
+    }
+
+    /* Buttons */
+    .buttons {
+        margin-top: 20px;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 18px;
+    }
+
+    .btn1,
+    .btn2 {
+        width: 220px;
+        margin: 0 auto;
+    }
+
+
+    /* =====================================
+       HOUSE IMAGE
+    ===================================== */
+
+    .hero-image {
+        width: 100%;
+        max-width: 430px;
+
+        margin: 45px auto 0;
+
+        display: flex;
+        justify-content: center;
+
+        position: relative;
+        z-index: 1;
+    }
+
+    .hero-image img {
+        width: 100%;
+        max-width: 430px;
+
+        height: auto;
+
+        object-fit: cover;
+
+        border-radius: 20px;
+
+        display: block;
+
+        box-shadow:
+            0 15px 40px rgba(0, 0, 0, 0.55);
+    }
+
+}
+/* =========================================
+   MOBILE HERO - FINAL ADJUSTMENT
+========================================= */
+
+@media (max-width: 768px) {
+
+    /* Hero ko navbar se neeche start karna */
+    .hero {
+        padding-top: 80px;
+    }
+
+    /* Hero content */
+    .hero-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    /* Text section */
+    .hero-left {
+        width: 100%;
+        text-align: center;
+        position: relative;
+        z-index: 3;
+
+        padding: 25px 20px 0;
+    }
+
+    /* Main heading */
+    .hero-left h1 {
+        margin-top: 20px;
+        margin-bottom: 25px;
+
+        font-size: 40px;
+        line-height: 1.08;
+
+        /* Strong outer shadow */
+        text-shadow:
+            2px 2px 5px rgba(0, 0, 0, 1),
+            -2px -2px 5px rgba(0, 0, 0, 1),
+            2px -2px 5px rgba(0, 0, 0, 1),
+            -2px 2px 5px rgba(0, 0, 0, 1);
+    }
+
+    /* Orange text */
+    .hero-left h1 span {
+        display: block;
+
+        text-shadow:
+            2px 2px 5px rgba(0, 0, 0, 1),
+            -2px -2px 5px rgba(0, 0, 0, 1),
+            2px -2px 5px rgba(0, 0, 0, 1),
+            -2px 2px 5px rgba(0, 0, 0, 1);
+    }
+
+    /* Description */
+    .hero-left p {
+        font-size: 17px;
+        line-height: 1.9;
+
+        margin: 20px auto 25px;
+
+        max-width: 360px;
+
+        text-shadow:
+            1px 1px 4px rgba(0, 0, 0, 1),
+            -1px -1px 4px rgba(0, 0, 0, 1);
+    }
+
+    /* Buttons */
+    .buttons {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        gap: 18px;
+
+        margin-top: 20px;
+    }
+
+    .btn1,
+    .btn2 {
+        width: 220px;
+        margin: 0 auto;
+    }
+
+
+    /* =========================================
+       HOUSE IMAGE
+    ========================================= */
+
+    .hero-right {
+        width: 100%;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        margin-top: 40px;
+
+        padding: 0 20px;
+
+        position: relative;
+        z-index: 2;
+    }
+
+    .hero-right img {
+        width: 100%;
+        max-width: 420px;
+
+        height: auto;
+
+        display: block;
+
+        object-fit: cover;
+
+        border-radius: 20px;
+
+        box-shadow:
+            0 15px 40px rgba(0, 0, 0, 0.6);
+    }
+
+}
+/* =========================================
+   MOBILE HERO - IMAGE BEHIND TEXT
+========================================= */
+
+@media (max-width: 768px) {
+
+    .hero {
+        position: relative;
+        padding-top: 100px;
+        overflow: hidden;
+    }
+
+    .hero-content {
+        position: relative;
+        min-height: 850px;
+        display: block;
+    }
+
+    /* Text */
+  .hero-left {
+    position: relative;
+    z-index: 3;
+    width: 100%;
+
+    /* Text ko neeche shift karega */
+    padding: 260px 20px 0;
+
+    text-align: center;
+}
+
+    .hero-left h1 {
+        margin-top: 20px;
+        margin-bottom: 25px;
+
+        font-size: 40px;
+        line-height: 1.08;
+
+        /* Text outer shadow */
+        text-shadow:
+            2px 2px 5px rgba(0, 0, 0, 1),
+            -2px -2px 5px rgba(0, 0, 0, 1),
+            2px -2px 5px rgba(0, 0, 0, 1),
+            -2px 2px 5px rgba(0, 0, 0, 1);
+    }
+
+    .hero-left p {
+        font-size: 17px;
+        line-height: 1.9;
+
+        text-shadow:
+            2px 2px 5px rgba(0, 0, 0, 1),
+            -2px -2px 5px rgba(0, 0, 0, 1);
+    }
+
+
+    /* =================================
+       IMAGE BEHIND TEXT
+    ================================= */
+
+    .hero-right {
+        position: absolute;
+
+        top: 20px;
+        left: 50%;
+
+        transform: translateX(-50%);
+
+        width: 90%;
+
+        z-index: 1;
+
+        opacity: 0.85;
+    }
+
+    .hero-right img {
+        width: 100%;
+        height: auto;
+
+        display: block;
+
+        border-radius: 20px;
+
+        box-shadow:
+            0 15px 40px rgba(0, 0, 0, 0.7);
+    }
+
+
+    /* Buttons image ke upar */
+    .buttons {
+        position: relative;
+        z-index: 4;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        gap: 18px;
+
+        margin-top: 20px;
+    }
+
+    .btn1,
+    .btn2 {
+        width: 220px;
+    }
+
+
+    /* Stats */
+    .hero-stats {
+        position: relative;
+        z-index: 4;
+    }
+
 }
